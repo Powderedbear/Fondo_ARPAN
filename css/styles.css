@@ -1,0 +1,264 @@
+/* ! Animaciones */
+/* * Mover en circulo*/
+@keyframes moveInCircle{
+ 0%{
+    transform: rotate(0deg);
+ }   
+ 50%{
+    transform: rotate(180deg);
+ }
+ 100%{
+    transform: rotate(360deg);
+ }
+}
+
+/* * Mover en vertical*/
+@keyframes moveVertical {
+    0%{
+        transform: translateY(-50%);
+    }
+    50%{
+        transform: translateY(50%);
+    }
+    100%{
+        transform: translateY(-50%);
+    }
+}
+
+/* * Mover en horizontal */
+@keyframes moveHorizontal {
+    0%{
+        transform: translateX(-50%) translateY(-10%);
+    }
+    50%{
+        transform: translateX(50%) translateY(10%);
+    }
+    100%{
+        transform: translateX(-50%) translateY(-10%);
+    }
+}
+
+/* ! Animación del texto */
+
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to top, #f3e7f3, #696cff5e);
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    cursor: default;
+}
+
+.text {
+    color: white;
+    font-size: 2rem;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.text span {
+    display: inline-block;
+    position: relative;
+    color: white;
+    transition: background-position 0.3s;
+    background: linear-gradient(45deg, #F72585, #696CFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-position: center;
+}
+
+.text span.hovered {
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), #F72585, #696CFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.textInvisible {
+    color: transparent; 
+    font-size: 2rem;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 0;
+    position: relative;
+    opacity: 0; 
+    transition: opacity 0.3s; 
+}
+
+.textInvisible span {
+    display: inline-block;
+    position: relative;
+    color: white;
+    transition: background-position 0.3s, opacity 0.3s; 
+    background: linear-gradient(45deg, #F72585,  #696CFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-position: center;
+}
+
+.textInvisible span.hovered {
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), #F72585, #696CFF);
+    -webkit-background-clip: text; 
+    background-clip: text;
+    color: transparent;
+}
+
+.circle1, .circle2, .circle3 {
+    position: absolute;
+    border-radius: 70%;
+    opacity: 0.6;
+    filter: blur(100px);
+}
+.circle1 {
+    width: 400px;
+    height: 400px;
+    background: #F72585;
+    top: -100px;
+    left: -100px;
+    transform-origin: center center;
+    animation: moveVertical 20s ease infinite;
+}
+.circle2 {
+    width: 500px;
+    height: 500px;
+    background: #696cff;
+    top: -150px;
+    right: -150px;
+    transform-origin: calc(50% - 400px);
+    animation: moveInCircle 50s linear infinite;
+}
+.circle3 {
+    width: 400px;
+    height: 400px;
+    background: #F72585;
+    top: -100px;
+    left: -100px;
+    transform-origin: calc(50% + 800px) calc(50% - 200px);
+    animation: moveInCircle 50s ease infinite;
+}
+/*! Responsivo*/
+@media (max-width: 1200px) {
+    .text, .textInvisible {
+        font-size: 1.75rem;
+    }
+
+    .circle1, .circle2, .circle3 {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .text, .textInvisible {
+        font-size: 1.5rem;
+    }
+
+    .circle1, .circle2, .circle3 {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .text, .textInvisible {
+        font-size: 1.25rem;
+    }
+
+    .circle1, .circle2, .circle3 {
+        width: 250px;
+        height: 250px;
+    }
+}
+@media (max-width: 576px) {
+    .text, .textInvisible {
+        font-size: 1.1rem;
+    }
+
+    .circle1, .circle2, .circle3 {
+        width: 212px;
+        height: 212px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-size: 100% auto;
+    }
+
+    .text, .textInvisible {
+        font-size: 1rem;
+    }
+
+    .circle1 {
+        width: 200px;
+        height: 200px;
+        top: -25px;
+        left: -25px;
+    }
+
+    .circle2 {
+        width: 300px;
+        height: 300px;
+        top: -37px;
+        right: -37px;
+        transform-origin: calc(50% - 300px);
+        animation: moveInCircle 30s linear infinite;
+    }
+
+    .circle3 {
+        width: 200px;
+        height: 200px;
+        top: -25px;
+        left: -25px;
+    }
+}
+
+@media (max-width: 390px) {
+    .text, .textInvisible {
+        font-size: 0.9rem;
+    }
+
+    .circle1, .circle2, .circle3 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .circle1 {
+        top: -20px;
+        left: -20px;
+    }
+
+    .circle2 {
+        width: 250px;
+        height: 250px;
+        top: -30px;
+        right: -30px;
+        transform-origin: calc(50% - 250px);
+        animation: moveInCircle 25s linear infinite;
+    }
+
+    .circle3 {
+        top: -20px;
+        left: -20px;
+    }
+}
+
+
